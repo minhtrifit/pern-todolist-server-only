@@ -10,6 +10,10 @@ app.use(
   cors({
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
+  }),
+  cors({
+    origin: "https://minhtrifit-pern-todolist.netlify.app",
+    methods: ["GET", "POST"],
   })
 );
 
