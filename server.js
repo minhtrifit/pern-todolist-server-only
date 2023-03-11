@@ -6,26 +6,26 @@ require("dotenv").config();
 
 const port = process.env.PORT || 5000;
 
-app.use(
-  cors({
-    origin: "https://minhtrifit-pern-todolist.netlify.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://minhtrifit-pern-todolist.netlify.app",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//   })
+// );
 
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     "https://minhtrifit-pern-todolist.netlify.app"
-//   );
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "X-Requested-With,content-type"
-//   );
-//   res.setHeader("Access-Control-Allow-Credentials", true);
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://minhtrifit-pern-todolist.netlify.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
